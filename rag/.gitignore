@@ -1,4 +1,3 @@
-config.py
 test_data/all_chunks.json
 test_data/quy_che_hoat_dong.txt
 vectordb/chroma_data
