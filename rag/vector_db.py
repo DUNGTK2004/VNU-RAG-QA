@@ -96,6 +96,7 @@ class VectorDB:
             top_n=top_n
         )
 
+
         # Kết hợp compressor và retriever để tạo ContextualCompressionRetriever
         compression_retriever = ContextualCompressionRetriever(
             base_compressor=compressor,
@@ -103,6 +104,28 @@ class VectorDB:
         )
 
         return compression_retriever
+    
+    
+    def get_documents_after_rerank(self, docs: list[Document], question: str, top_n: int = 5):
+
+        model = HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-base")
+
+        # Cấu hình compressor chọn top_n kết quả tốt nhất sau rerank
+        compressor = CrossEncoderReranker(
+            model=model,
+            top_n=top_n
+        )
+
+        compressed_docs = compressor.compress_documents(docs, question)
+
+        return compressed_docs
+
+    def combine_documents(self, docs: list[Document]):
+        """Kết hợp các tài liệu thành một chuỗi văn bản"""
+        combined_text = ""
+        for doc in docs:
+            combined_text += doc.page_content + "\n"
+        return combined_text
 
 
 if __name__ == "__main__":

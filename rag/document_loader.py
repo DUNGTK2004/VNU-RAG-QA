@@ -67,7 +67,7 @@ class TextSplitter:
     """
     Chia nhỏ tài liệu thành các đoạn text có độ dài cố định với độ chồng lấn.
     """
-    def __init__(self, chunk_size: int = 512, chunk_overlap: int = 64):
+    def __init__(self, chunk_size: int = 512, chunk_overlap: int = 100):
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
         self.splitter = RecursiveCharacterTextSplitter(
