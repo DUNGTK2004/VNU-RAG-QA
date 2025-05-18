@@ -211,7 +211,7 @@ try:
 
                 context_arr = remove_duplicate_retrieve_documents(context_arr)
 
-                docs_after_rerank = vector_db.get_documents_after_rerank(context_arr, question, top_n=5)
+                docs_after_rerank = vector_db.get_documents_after_rerank(context_arr, question, top_n=10)
                 combined_context = vector_db.combine_documents(docs_after_rerank)
                 
                 # Generate final response
