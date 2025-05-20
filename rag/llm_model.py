@@ -39,11 +39,9 @@ def get_llm(model_id="bert-base-cased", device=0, max_length=512):
 def get_api_llm(model_name: str="llama3.2"):
 
     llm = ChatOllama(model=model_name, 
-                     max_tokens=100, 
-                     temperature=0.1, 
-                     top_p=0.7, 
-                     top_k=50, 
-                     repeat_penalty=1)
+                     max_tokens=50, 
+                     temperature=0
+)
 
     return llm
 

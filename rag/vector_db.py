@@ -76,7 +76,7 @@ class VectorDB:
 
     def get_retriever_with_reranker(
         self, 
-        search_kwargs: dict = {"k": 5}, 
+        search_kwargs: dict = {"k": 10}, 
         search_type: str = "similarity", 
         reranker_model_name: str = "BAAI/bge-reranker-base", 
         top_n: int = 5

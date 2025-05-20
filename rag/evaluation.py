@@ -100,7 +100,7 @@ def compute_metric_general(predicted_answers, expected_answers) -> dict:
     avg_f1_score = total_f1_score / num_samples
     avg_precision = total_precision / num_samples
     avg_recall = total_recall / num_samples
-    avg_exact_match = num_exact_matches / num_samples
+    avg_exact_match = f"{num_exact_matches} / {num_samples}"
     return {
         "exact_match": avg_exact_match,
         "f1_score": avg_f1_score,
