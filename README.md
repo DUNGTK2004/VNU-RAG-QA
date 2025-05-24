@@ -66,6 +66,7 @@ python chat.py
 ---
 
 ### ✅ Sample Result
+All results in folder: /rag/result_images
 
 ![Chat Output](https://github.com/user-attachments/assets/2d3f787c-088f-4a78-ac1d-b79782c0fc59)
 
