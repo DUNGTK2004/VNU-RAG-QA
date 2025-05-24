@@ -1,27 +1,41 @@
-# Cách sử dụng:
+# 📚 Hướng dẫn sử dụng
 
+## 1. Cài đặt thư viện
 
-Đầu tiên cài các thư viện:
+Trước tiên, bạn cần cài đặt các thư viện cần thiết bằng lệnh sau:
 
-`pip install -r requirements.txt`
-
-import class VectorDB từ file vector_db.py và khởi tạo trong file làm việc của bạn. 
-
-Đầu tiên chạy file vector_db.py để tạo database (chạy khá lâu) (có thể sửa đường dẫn của folder chứa database nếu muốn)
-
-Sau khi đã có database thì dùng code này trong file của bạn để lấy ra context cho câu hỏi.
-Example: 
+```bash
+pip install -r requirements.txt
 ```
+
+## 2. Tạo và sử dụng cơ sở dữ liệu vector
+
+### Bước 1: Tạo cơ sở dữ liệu
+
+Chạy file `vector_db.py` để tạo database vector (quá trình này có thể mất khá nhiều thời gian).  
+Bạn có thể chỉnh sửa đường dẫn thư mục chứa database nếu cần.
+
+### Bước 2: Khởi tạo và truy vấn
+
+Trong file làm việc của bạn, import class `VectorDB` từ `vector_db.py` và khởi tạo đối tượng như sau:
+
+```python
 from vector_db import VectorDB
 
-vectordb = VectorDB() # Khởi tạo vectordb
+vectordb = VectorDB()  # Khởi tạo vectordb
 
-retriever = vector_db.get_retriever(search_kwargs={"k": 10}) # Khởi tạo retriever
+retriever = vectordb.get_retriever(search_kwargs={"k": 10})  # Khởi tạo retriever
 
-query = "đại học quốc gia hà nội có địa chỉ là?" # Câu hỏi
-relevant_docs = retriever.get_relevant_documents(query) # Các context thu được
+query = "đại học quốc gia hà nội có địa chỉ là?"  # Câu hỏi
+relevant_docs = retriever.get_relevant_documents(query)  # Các context thu được
 ```
-Xong đoạn này thì đây chính là những documents thu được từ quá trình retriver, sau đó thì lấy đoạn này đưa vào llm kết hợp với câu hỏi để sinh ra câu trả lời .
 
-Thường thì sẽ bị lỗi là ở thư mục khác nên ko import được từ thư mục này, cái đấy thì tự xử lý đi
+### Bước 3: Sử dụng kết quả
 
+Sau bước trên, bạn sẽ thu được các đoạn văn bản (documents) phù hợp với câu hỏi.  
+Hãy đưa chúng cùng với câu hỏi vào mô hình LLM để sinh ra câu trả lời.
+
+---
+
+> ⚠️ **Lưu ý:**  
+> Nếu gặp lỗi không import được `vector_db.py` do khác thư mục, bạn cần tự xử lý đường dẫn import nhé.
